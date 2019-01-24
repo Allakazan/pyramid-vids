@@ -28,12 +28,13 @@ class HomeViews:
         skip = self.limit * (active_page-1)
 
         videos = []
-        for vid in self.request.db['videos'].find().sort([("_id", -1)]).limit(self.limit).skip(skip):
-            videos.append({
-                "name": vid['name'],
-                "genre": self.request.db['genres'].find_one({"_id": vid['genre']})["name"],
-                "code": vid['code'],
-                "up_votes": vid['up_votes'],
-                "down_votes": vid['down_votes']
-            })
+        if count > 0:
+            for vid in self.request.db['videos'].find().sort([("_id", -1)]).limit(self.limit).skip(skip):
+                videos.append({
+                    "name": vid['name'],
+                    "genre": self.request.db['genres'].find_one({"_id": vid['genre']})["name"],
+                    "code": vid['code'],
+                    "up_votes": vid['up_votes'],
+                    "down_votes": vid['down_votes']
+                })
         return {'videos': videos, 'pages': pages, 'active_page': active_page, 'count': pages}
