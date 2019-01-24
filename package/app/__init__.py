@@ -18,6 +18,7 @@ def main(global_config, **settings):
     config.add_route('video', '/watch')
     config.add_route('thumbs', '/thumbs')
     config.add_route('upload', '/upload')
+    config.add_route('score', '/score')
     config.add_route('not-found', '/404')
 
     config.add_static_view(name='public', path='app:public')
