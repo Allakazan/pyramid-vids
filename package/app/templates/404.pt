@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Starter Template - Materialize</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="${request.static_url('app:public/css/style.css')}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link rel="stylesheet" href="${request.static_url('app:public/css/materialize.min.css')}"/>
+</head>
+<body>
+
+	<main>
+	  <div class="container">
+		<div class="section">
+
+		  <h1>Not found <span>:(</span></h1>
+		  <p>Sorry, but the page you were trying to view does not exist.</p>
+		  <p>It looks like this was the result of either:</p>
+		  <ul>
+			<li>- a mistyped address</li>
+			<li>- an out-of-date link</li>
+		  </ul>
+		
+		</div>
+		<br><br>
+	  </div>
+	</main>
+
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="${request.static_url('app:public/js/materialize.min.js')}"></script>
+  <script src="${request.static_url('app:public/js/init.js')}"></script>
+
+  </body>
+</html>

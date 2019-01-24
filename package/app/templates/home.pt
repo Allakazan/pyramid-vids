@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Starter Template - Materialize</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="${request.static_url('app:public/css/style.css')}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link rel="stylesheet" href="${request.static_url('app:public/css/materialize.min.css')}"/>
+</head>
+<body>
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo"></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#">Navbar Link</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="sidenav">
+        <li><a href="#">Navbar Link</a></li>
+      </ul>
+      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+	<main>
+	  <div class="section no-pad-bot" id="index-banner">
+		<div class="container">
+		  <br><br>
+		  <h1 class="header center orange-text">Welcome</h1>
+		  <div class="row center">
+			<h5 class="header col s12 light">Latest videos: </h5>
+		  </div>
+		  <br><br>
+
+		</div>
+	  </div>
+
+
+	  <div class="container">
+		<div class="section">
+
+		  <!--   Icon Section   -->
+		  <div class="row">
+			<div class="col s12 m3" tal:repeat="video videos">
+				<div class="card">
+					<div class="card-image waves-effect waves-block waves-light" onclick="window.setTimeout(function(){ window.location = '/watch?v=${video.code}'; },150);">
+					  <img src="${request.static_url('app:data/' + str(video.code) + '/thumb.jpg')}">
+					  <span class="card-title"></span>
+					</div>
+					<div class="card-contentx">
+					</div>
+
+				  </div>
+				  <div class="right">
+						<i class="tiny material-icons green-text">thumb_up</i> ${video.up_votes}
+						<i class="tiny material-icons red-text">thumb_down</i> ${video.down_votes}
+				  </div>
+				  <h6 tal:content="video.name" style="font-weight: 500;"></h6>
+				  <p tal:content="video.genre" style="color: rgb(96, 96, 96); margin-top: 0"></p>
+			</div>
+		  </div>
+
+		  <div class="row" tal:define="prev active_page - 1; next active_page + 1">
+			<ul class="pagination center">
+				<li tal:attributes="class 'disabled' if prev < 1 else 'waves-effect'"><a tal:attributes="href '#!' if prev < 1 else '/?page=' + str(prev)"><i class="material-icons">chevron_left</i></a></li>
+				
+				<li tal:repeat="page range(pages)" tal:attributes="class 'active orange' if page + 1 == active_page else 'waves-effect'">
+					<a tal:attributes="href '/?page=' + str(page + 1)" >${page + 1}</a>
+				</li>
+				
+				<li tal:attributes="class 'disabled' if next > count else 'waves-effect'"><a tal:attributes="href '#!' if next > count else '/?page=' + str(next)"><i class="material-icons">chevron_right</i></a></li>
+			</ul>
+		  </div>
+		</div>
+		<br><br>
+	  </div>
+	</main>
+  <footer class="page-footer orange">
+    <div class="footer-copyright">
+      <div class="container">
+      Made by <a class="orange-text text-lighten-3" href="https://github.com/Allakazan">Bruno Marques</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="${request.static_url('app:public/js/materialize.min.js')}"></script>
+  <script src="${request.static_url('app:public/js/init.js')}"></script>
+
+  </body>
+</html>
