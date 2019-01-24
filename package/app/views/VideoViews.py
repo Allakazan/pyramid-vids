@@ -87,7 +87,11 @@ class TutorialViews:
                     self.save_files(thumbfile, path, "thumb")
                     self.save_files(videofile, path, "video")
 
-                    last_id = list(self.request.db['videos'].find().sort([("_id", -1)]).limit(1))[0]["_id"]
+                    list_ids = list(self.request.db['videos'].find().sort([("_id", -1)]).limit(1))
+                    if len(list_ids) > 0:
+                        last_id = list_ids[0]["_id"]
+                    else:
+                        last_id = 1
 
                     post = {
                         "_id": last_id + 1,
