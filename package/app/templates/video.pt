@@ -25,9 +25,25 @@
   </nav>
 	<main>
 	  <div class="container">
-		<div class="section">
-
-
+		<div id="vid-wrapper" class="section">
+			<div class="row" >
+				<a class="waves-effect waves-light btn orange" href="/"><i class="material-icons left">arrow_back</i>Back</a>
+			</div>
+			<video class="vid responsive-video" controls>
+				<source src="${request.static_url('app:data/' + video.code + '/video.mp4')}" type="video/mp4">
+			</video>
+			<div class="vid row" >
+				<div class="col s12 m12 l12 xl8" style="padding-top: 20px">
+					<div class="right">
+						<a class="btn-floating btn-medium waves-effect waves-light green" onclick="thumbs('up', '${video.code}')"><i class="material-icons">thumb_up</i></a>
+						<span id="thumbs_up_text">${video.up_votes}</span>
+						<a class="btn-floating btn-medium waves-effect waves-light red" onclick="thumbs('down', '${video.code}')"><i class="material-icons">thumb_down</i></a>
+						<span id="thumbs_down_text">${video.down_votes}</span>
+					</div>
+					<h5 style="margin-top: 10px">${video.name}</h5>
+					<p>${video.genre}</p>
+				</div>
+			</div>
 		</div>
 		<br><br>
 	  </div>
@@ -44,7 +60,8 @@
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="${request.static_url('app:public/js/materialize.min.js')}"></script>
-  <script src="${request.static_url('app:public/js/init.js')}"></script>
-
+  <script src="${request.static_url('app:public/js/client.js')}"></script>
+  <script src="${request.static_url('app:public/js/video.js')}"></script>
+  
   </body>
 </html>

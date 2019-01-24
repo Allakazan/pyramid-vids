@@ -44,7 +44,7 @@
 		  <div class="row">
 			<div class="col s12 m3" tal:repeat="video videos">
 				<div class="card">
-					<div class="card-image waves-effect waves-block waves-light" onclick="window.setTimeout(function(){ window.location = '/watch?v=${video.code}'; },150);">
+					<div class="card-image waves-effect waves-block waves-light" onclick="window.setTimeout(function(){ window.location.href = '/watch?v=${video.code}'; },150);">
 					  <img src="${request.static_url('app:data/' + str(video.code) + '/thumb.jpg')}">
 					  <span class="card-title"></span>
 					</div>
@@ -88,7 +88,6 @@
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="${request.static_url('app:public/js/materialize.min.js')}"></script>
-  <script src="${request.static_url('app:public/js/init.js')}"></script>
 
   </body>
 </html>
